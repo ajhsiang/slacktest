@@ -47,7 +47,7 @@ var controller = Botkit.slackbot({
 });
 
 var bot = controller.spawn({
-    token: "xoxb-219962695924-xHUDXgZQUCHuJa3bRgTr56Kc"
+    token: process.env.token
 }).startRTM();
 
 controller.hears(['hello', 'hi'], 'direct_message,direct_mention,mention', function(bot, message) {
@@ -85,6 +85,14 @@ controller.hears(['call me (.*)', 'my name is (.*)'], 'direct_message,direct_men
             bot.reply(message, 'Got it. I will call you ' + user.name + ' from now on.');
         });
     });
+});
+
+controller.hears(['(^.*)?\?'], 'direct_message,direct_mention,mention', function(bot, message) {
+
+      
+
+            bot.reply(message, 'If you have a question you can ask: <@U6A9Z6P1S|niles');
+
 });
 
 controller.hears(['what is my name', 'who am i'], 'direct_message,direct_mention,mention', function(bot, message) {
